@@ -104,12 +104,15 @@ RCT_EXPORT_METHOD(getAll:(RCTPromiseResolveBlock)resolve
     rejecter:(RCTPromiseRejectBlock)reject) {
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"];
     for (NSHTTPCookie *c in cookieStorage.cookies) {
         NSMutableDictionary *d = [NSMutableDictionary dictionary];
         [d setObject:c.value forKey:@"value"];
         [d setObject:c.name forKey:@"name"];
         [d setObject:c.domain forKey:@"domain"];
         [d setObject:c.path forKey:@"path"];
+        [d setObject:[formatter stringFromDate:c.expiresDate] forKey:@"expiresDate"];
         [cookies setObject:d forKey:c.name];
     }
     resolve(cookies);
