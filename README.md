@@ -138,7 +138,7 @@ React Native comes with a WebView component, which uses UIWebView on iOS. Introd
 
 To use this it's required to use a special implementation of the WebView component (e.g. [react-native-wkwebview](https://github.com/CRAlpha/react-native-wkwebview)).
 
-This special implementation of the WebView component stores the cookies __not__ in `NSHTTPCookieStorage` anymore. The new cookie-storage is `WKHTTPCookieStore` and implementes a differnt interface.
+This special implementation of the WebView component stores the cookies __not__ in `NSHTTPCookieStorage` anymore. The new cookie-storage is `WKHTTPCookieStore` and implementes a different interface.
 
 To use this _CookieManager_ with WebKit-Support we extended the interface with the attribute `useWebKit` (a boolean value, default: `FASLE`) for the following methods:
 
