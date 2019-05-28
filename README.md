@@ -1,41 +1,42 @@
-## react-native-cookies
+# react-native-cookies
 
+Fork from [react-native-cookies](https://www.npmjs.com/package/react-native-cookies)
 Cookie manager for react native.
 
 [![npm version](https://badge.fury.io/js/react-native-cookies.svg)](https://badge.fury.io/js/react-native-cookies)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-cookies.svg)](https://www.npmjs.com/package/react-native-cookies)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/joeferraro/react-native-cookies/master/LICENSE.md)
 
-### Looking for Maintainers
+## Looking for Maintainers
 
 I no longer use this library and I'm looking for maintainer(s) to take full control over the development and release cycle.
 
-### Installation
+## Installation
 
-```
+```sh
 yarn add react-native-cookies
 ```
 
-### Linking
+## Linking
 
-#### Automatic (recommended)
+### Automatic (recommended)
 
+```sh
+react-native link @taoqf/react-native-cookies
 ```
-react-native link react-native-cookies
-```
 
-#### Manual
+### Manual
 
 If automatic linking does not work, you can manually link this library by following the instructions below:
 
-##### iOS
+#### iOS
 
 1. Open your project in Xcode, right click on `Libraries` and click `Add
    Files to "Your Project Name"` Look under `node_modules/react-native-cookies/ios` and add `RNCookieManagerIOS.xcodeproj`.
 2. Add `libRNCookieManagerIOS.a` to `Build Phases -> Link Binary With Libraries`.
 3. Clean and rebuild your project
 
-##### Android
+#### Android
 
 Run `react-native link` to link the react-native-cookies library.
 
@@ -77,9 +78,7 @@ protected List<ReactPackage> getPackages() {
 }
 ```
 
-
-
-### Usage
+## Usage
 
 ```javascript
 import CookieManager from 'react-native-cookies';
@@ -98,10 +97,10 @@ CookieManager.set({
 });
 
 // Set cookies from a response header
-// This allows you to put the full string provided by a server's Set-Cookie 
+// This allows you to put the full string provided by a server's Set-Cookie
 // response header directly into the cookie store.
 CookieManager.setFromResponse(
-  'http://example.com', 
+  'http://example.com',
   'user_session=abcdefg; path=/; expires=Thu, 1 Jan 2030 00:00:00 -0000; secure; HttpOnly')
     .then((res) => {
       // `res` will be true or false depending on success.
@@ -134,8 +133,9 @@ CookieManager.clearByName('cookie_name')
 
 ```
 
-#### WebKit-Support (iOS only)
-React Native comes with a WebView component, which uses UIWebView on iOS. Introduced in iOS 8 Apple implemented the WebKit-Support with all the performance boost. 
+### WebKit-Support (iOS only)
+
+React Native comes with a WebView component, which uses UIWebView on iOS. Introduced in iOS 8 Apple implemented the WebKit-Support with all the performance boost.
 
 To use this it's required to use a special implementation of the WebView component (e.g. [react-native-wkwebview](https://github.com/CRAlpha/react-native-wkwebview)).
 
@@ -150,7 +150,8 @@ To use this _CookieManager_ with WebKit-Support we extended the interface with t
 |get| Yes | `CookieManager.get(url:string, useWebKit:boolean)` |
 |set| Yes | `CookieManager.set(cookie:object, useWebKit:boolean)` |
 
-##### Usage
+#### Usage
+
 ```javascript
 import CookieManager from 'react-native-cookies';
 
@@ -192,7 +193,7 @@ CookieManager.set(newCookie, useWebKit)
 	});
 ```
 
-### TODO
+## TODO
 
 - Proper `getAll` dictionary by domain
 - Proper error handling
