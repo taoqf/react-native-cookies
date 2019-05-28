@@ -1,6 +1,6 @@
 {
 	"name": "@taoqf/react-native-cookies",
-	"version": "4.0.0",
+	"version": "4.0.1",
 	"description": "Cookie manager for react native",
 	"keywords": [
 		"react",
@@ -10,6 +10,19 @@
 		"cookies",
 		"webview",
 		"react-native"
+	],
+	"readme": "./README.md",
+	"homepage": "https://github.com/taoqf/react-native-cookies",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/taoqf/react-native-cookies.git"
+	},
+	"contributors": [
+		{
+			"name": "taoqf",
+			"email": "tao_qiufeng@126.com",
+			"url": "https://github.com/taoqf"
+		}
 	],
 	"main": "index.js",
 	"author": "@joeferraro",
