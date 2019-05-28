@@ -113,7 +113,7 @@ RCT_EXPORT_METHOD(
 
                 [cookieStore getAllCookies:^(NSArray<NSHTTPCookie *> *allCookies) {
                     NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
-                    
+
                     for(NSHTTPCookie *currentCookie in allCookies) {
                         if ([url.host containsString:currentCookie.domain]) {
                             [cookies setObject:currentCookie.value forKey:currentCookie.name];
@@ -128,7 +128,16 @@ RCT_EXPORT_METHOD(
     } else {
         NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
         for (NSHTTPCookie *c in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
-            [cookies setObject:c.value forKey:c.name];
+            NSMutableDictionary *d = [NSMutableDictionary dictionary];
+            [d setObject:c.value forKey:@"value"];
+            [d setObject:c.name forKey:@"name"];
+            [d setObject:c.domain forKey:@"domain"];
+            [d setObject:c.path forKey:@"path"];
+            NSString *expiresStr = [self.formatter stringFromDate:c.expiresDate];
+            if (expiresStr) {
+              [d setObject:expiresStr forKey:@"expiresDate"];
+            }
+            [cookies setObject:d forKey:c.name];
         }
         resolve(cookies);
     }
@@ -215,7 +224,10 @@ RCT_EXPORT_METHOD(getAll:(RCTPromiseResolveBlock)resolve
         [d setObject:c.name forKey:@"name"];
         [d setObject:c.domain forKey:@"domain"];
         [d setObject:c.path forKey:@"path"];
-        [d setObject:[self.formatter stringFromDate:c.expiresDate] forKey:@"expiresDate"];
+        NSString *expiresStr = [self.formatter stringFromDate:c.expiresDate];
+        if (expiresStr) {
+          [d setObject:expiresStr forKey:@"expiresDate"];
+        }
         [cookies setObject:d forKey:c.name];
     }
 }
