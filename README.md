@@ -14,7 +14,7 @@ I no longer use this library and I'm looking for maintainer(s) to take full cont
 ## Installation
 
 ```sh
-yarn add react-native-cookies
+yarn add @taoqf/react-native-cookies
 ```
 
 ## Linking
@@ -46,7 +46,7 @@ Or if you have trouble, make the following additions to the given files manually
 
 ```gradle
 include ':react-native-cookies'
-project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cookies/android')
+project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '../node_modules/@taoqf/react-native-cookies/android')
 ```
 
 **android/app/build.gradle**
@@ -81,7 +81,7 @@ protected List<ReactPackage> getPackages() {
 ## Usage
 
 ```javascript
-import CookieManager from 'react-native-cookies';
+import CookieManager from '@taoqf/react-native-cookies';
 
 // set a cookie (IOS ONLY)
 CookieManager.set({
@@ -153,7 +153,7 @@ To use this _CookieManager_ with WebKit-Support we extended the interface with t
 #### Usage
 
 ```javascript
-import CookieManager from 'react-native-cookies';
+import CookieManager from '@taoqf/react-native-cookies';
 
 const useWebKit = true;
 
