@@ -53,7 +53,7 @@ project(':react-native-cookies').projectDir = new File(rootProject.projectDir, '
 ```gradle
 dependencies {
    ...
-   compile project(':react-native-cookies')
+   implementation project(':react-native-cookies')
 }
 ```
 
