@@ -100,25 +100,6 @@ RCT_EXPORT_METHOD(getFromResponse:(NSURL *)url
     }];
 }
 
--(NSString *)getDomainName:(NSURL *) url
-{
-    NSString *separator = @".";
-    NSInteger maxLength = 2;
-
-    NSURLComponents *components = [[NSURLComponents alloc]initWithURL:url resolvingAgainstBaseURL:FALSE];
-    NSArray<NSString *> *separatedHost = [components.host componentsSeparatedByString:separator];
-    NSInteger count = [separatedHost count];
-    NSInteger endPosition = count;
-    NSInteger startPosition = count - maxLength;
-
-    NSMutableString *result = [[NSMutableString alloc]init];
-    for (NSUInteger i = startPosition; i != endPosition; i++) {
-        [result appendString:separator];
-        [result appendString:[separatedHost objectAtIndex:i]];
-    }
-    return result;
-}
-
 RCT_EXPORT_METHOD(
     get:(NSURL *) url
     useWebKit:(BOOL)useWebKit
@@ -128,13 +109,13 @@ RCT_EXPORT_METHOD(
     if (useWebKit) {
         if (@available(iOS 11.0, *)) {
             dispatch_async(dispatch_get_main_queue(), ^(){
-                NSString *topLevelDomain = [self getDomainName:url];
-
                 WKHTTPCookieStore *cookieStore = [[WKWebsiteDataStore defaultDataStore] httpCookieStore];
+
                 [cookieStore getAllCookies:^(NSArray<NSHTTPCookie *> *allCookies) {
                     NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
+                    
                     for(NSHTTPCookie *currentCookie in allCookies) {
-                        if([currentCookie.domain containsString:topLevelDomain]) {
+                        if ([url.host containsString:currentCookie.domain]) {
                             [cookies setObject:currentCookie.value forKey:currentCookie.name];
                         }
                     }
@@ -147,13 +128,7 @@ RCT_EXPORT_METHOD(
     } else {
         NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
         for (NSHTTPCookie *c in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
-            NSMutableDictionary *d = [NSMutableDictionary dictionary];
-            [d setObject:c.value forKey:@"value"];
-            [d setObject:c.name forKey:@"name"];
-            [d setObject:c.domain forKey:@"domain"];
-            [d setObject:c.path forKey:@"path"];
-            [d setObject:[self.formatter stringFromDate:c.expiresDate] forKey:@"expiresDate"];
-            [cookies setObject:d forKey:c.name];
+            [cookies setObject:c.value forKey:c.name];
         }
         resolve(cookies);
     }
