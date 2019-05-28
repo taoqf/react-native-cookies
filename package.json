@@ -1,19 +1,20 @@
 {
-    "name": "react-native-cookies",
-    "version": "3.3.0",
-    "description": "Cookie manager for react native",
-    "keywords": [
-        "react",
-        "react native",
-        "react-component",
-        "cookies",
-        "webview",
-        "react-native"
-    ],
-    "main": "index.js",
-    "author": "@joeferraro",
-    "license": "MIT",
-    "dependencies": {
-        "invariant": "^2.1.0"
-    }
+	"name": "@taoqf/react-native-cookies",
+	"version": "4.0.0",
+	"description": "Cookie manager for react native",
+	"keywords": [
+		"react",
+		"react native",
+		"react-component",
+		"cookie",
+		"cookies",
+		"webview",
+		"react-native"
+	],
+	"main": "index.js",
+	"author": "@joeferraro",
+	"license": "MIT",
+	"dependencies": {
+		"invariant": "^2.2.4"
+	}
 }
