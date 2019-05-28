@@ -3,8 +3,8 @@
 Fork from [react-native-cookies](https://www.npmjs.com/package/react-native-cookies)
 Cookie manager for react native.
 
-[![npm version](https://badge.fury.io/js/@taoqf/react-native-cookies.svg)](https://badge.fury.io/js/@taoqf/react-native-cookies)
-[![npm downloads](https://img.shields.io/npm/dm/@taoqf/react-native-cookies.svg)](https://www.npmjs.com/package/@taoqf/react-native-cookies)
+[![npm version](https://badge.fury.io/js/%40taoqf%2Freact-native-cookies.svg)](https://badge.fury.io/js/%40taoqf%2Freact-native-cookies)
+[![npm downloads](https://img.shields.io/dub/dm/@taoqf/react-native-cookies.svg)](https://www.npmjs.com/package/@taoqf/react-native-cookies)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/taoqf/react-native-cookies/blob/master/LICENSE.md)
 
 ## Looking for Maintainers
