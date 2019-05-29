@@ -7,10 +7,6 @@ Cookie manager for react native.
 [![npm downloads](https://img.shields.io/dub/dm/@taoqf/react-native-cookies.svg)](https://www.npmjs.com/package/@taoqf/react-native-cookies)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/taoqf/react-native-cookies/blob/master/LICENSE.md)
 
-## Looking for Maintainers
-
-I no longer use this library and I'm looking for maintainer(s) to take full control over the development and release cycle.
-
 ## Installation
 
 ```sh
